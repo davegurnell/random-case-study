@@ -5,6 +5,20 @@ Based on [Noel Welsh's blog post](http://underscore.io/blog/posts/2016/06/27/opa
 
 Licensed [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
+## Getting Started
+
+To run the example app, use `sbt.sh` or `sbt.bat`:
+
+~~~bash
+$ ./sbt.sh run
+~~~
+
+To run the unit tests:
+
+~~~bash
+$ ./sbt.sh test
+~~~
+
 ## Synopsis
 
 `Gen` is a type class and an algebraic data type. Instances of `Gen[A]` produce random values of type `A`:
