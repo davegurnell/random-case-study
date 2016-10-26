@@ -10,7 +10,7 @@ object Canvas {
   /**
    * Display a `JFrame` showing `num` random [[Point]] values produced by `gen`.
    */
-  def draw(title: String, num: Int)(gen: Gen[Point])(implicit rng: Rng): Unit = {
+  def draw(title: String, num: Int, rng: Rng)(gen: Gen[Point]): Unit = {
     val frame = new JFrame(title)
     val panel = new JPanel {
       override def paintComponent(g: Graphics): Unit = g match {
@@ -18,7 +18,7 @@ object Canvas {
           val size = this.getSize()
 
           (1 to num).foreach { i =>
-            val point = gen.sample
+            val point = gen.sample(rng)
             val x = (size.getWidth * point.x).toInt
             val y = (size.getHeight * point.y).toInt
             g.fillRect(x-1, y-1, 3, 3)

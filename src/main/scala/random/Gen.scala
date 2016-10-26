@@ -12,10 +12,10 @@ sealed trait Gen[A] {
    *
    * @param rng a number generator to use as a source of randomness.
    */
-  def sample(implicit rng: Rng): A = this match {
+  def sample(rng: Rng): A = this match {
     case PureGen(func)            => func(rng)
-    case MapGen(source, func)     => func(source.sample)
-    case FlatMapGen(source, func) => func(source.sample).sample
+    case MapGen(source, func)     => func(source.sample(rng))
+    case FlatMapGen(source, func) => func(source.sample(rng)).sample(rng)
   }
 
   /**
